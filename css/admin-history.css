@@ -1,0 +1,18 @@
+.admin-table th{
+    padding-top: 5px;
+    padding-bottom: 5px;
+    text-align: left;
+    background-color: #e03444;
+    color: rgb(0, 0, 0);
+  }
+  .admin-table tr:hover {background-color: #e03444;}
+
+  button[type ="submit"] {
+    background-color: #ff0000;
+    border: 1px solid #ff0000;
+    padding: 10px 20px;
+    border: none;
+    cursor: pointer;
+    color: #fff; 
+    font-size: 16px; 
+  }

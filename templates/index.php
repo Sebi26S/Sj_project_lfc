@@ -5,16 +5,7 @@ include_once('partials/header.php');
 
 <body class="body p-2">
   <br>  
-      <!--alert--> 
-
-  <div class="container">
-
-    <div class="alert alert-success alert-dismissible" role="alert">
-      <strong>Hello reader!</strong> If you want to be up to date every day, then sign up for our newsletter! <a href="register.php" class="alert-link">Sign up here!</a>
-      <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-    </div>
-
-  </div>
+     
     <!--cookies--> 
 
   <div id="cookies">
@@ -73,8 +64,7 @@ include_once('partials/header.php');
 
  
 
-      <script src="../js/app.js"></script>
-     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+    
 </body>
 <?php
 include_once('partials/footer.php');

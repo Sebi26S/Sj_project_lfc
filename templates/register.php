@@ -1,48 +1,64 @@
 <?php
-include_once('partials/header.php');
-?>
-<body class="body p-4">
-  <br>  
-            <!--registration--> 
+    include('partials/header.php');
 
-  <form id="registrationForm">
+    $user_object = new User();
 
-  <div class="containerr">
-    <h1>Registration</h1>
-  
-      <div class="input-group">
-        <label for="firstName">Name:</label>
-        <input type="text" id="firstName" name="firstName" required>
-      </div>
-  
-      <div class="input-group">
-        <label for="email">Email:</label>
-        <input type="email" id="email" name="email" required>
-      </div>
-  
-      <div class="input-group">
-        <label for="termsOfService">I agree to the <a href="terms.html">terms of service:</a></label>
-        <input type="checkbox" id="termsOfService" name="termsOfService" required>
-        
-      </div>
-  
-      <div class="input-group">
-        <label for="about">About:</label>
-        <textarea name="about" id="about" rows="5"></textarea>
-      </div>
-  
-        <button type="submit" id="submitButton">Submit</button>
+    // Spracovanie údajov z formulára po odoslaní
+    if(isset($_POST['user_register'])){
+        $email = $_POST['email'];
+        $password = $_POST['password'];
+        $confirm_password = $_POST['confirm_password'];
 
-    </div>
-  </form>
-  
+        // Kontrola, či sa zadané heslá zhodujú
+        if($password === $confirm_password) {
+            // Volanie metódy register() na vytvorenie používateľa
+            if($user_object->register($email, $password)) {
+                // Registrácia bola úspešná
+                echo "<br>";
+                echo "<p>Registrácia bola úspešná. Teraz sa môžete prihlásiť.</p>";
+            } else {
+                // Registrácia zlyhala
+                echo "<br>";
+                echo "<p>Registrácia zlyhala. Skúste to prosím znova.</p>";
+            }
+        } else {
+            // Heslá sa nezhodujú
+            echo "<br>";
+            echo "<p>Heslá sa nezhodujú. Skúste to prosím znova.</p>";
+        }
+    }
+?> 
+<body class="body p-2">
+<main>
+  <br>
+  <br>
+
+      <section class="containerr">
+        <div class="input-group">
+          <div class="col-100 text-center">
+              <h1>Registrácia</h1>
+              <form action="" method="POST">
+                    <label for="email">E-mail:</label>
+                    <br>
+                    <input type="email" id="email" name="email" required>
+                    <br>
+                    <label for="password">Heslo:</label>
+                    <br>
+                    <input type="password" id="password" name="password" required>
+                    <br>
+                    <label for="confirm_password">Zopakovať heslo:</label>
+                    <br>
+                    <input type="password" id="confirm_password" name="confirm_password" required>
+                    <br>
+                    <button type="submit" name="user_register">Registrovať sa</button>
+                </form>
+          </div>
+        </div>
+      </section>
+    </main>
+</body>
 
     
-
-    <script src="../js/register.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
-</body>
 <?php
-include_once('partials/footer.php');
-?>
-
+    include_once('partials/footer.php')
+?> 

@@ -1,5 +1,5 @@
 <?php
-require_once('../_inc/func.php');
+require_once('../_inc/config.php');
 ?>
 
 
@@ -32,10 +32,12 @@ require_once('../_inc/func.php');
                 '2'=>'history.php',
                 '3'=>'players.php',
                 '4'=>'galeira.php',
-                '5'=>'kontakt.php'
+                '5'=>'kontakt.php',
+                '6'=>'login.php'
            );
-           echo(generate_footer($pages));
-           
+           //echo(generate_footer($pages));
+           $menu_object  = new Menu2($pages);
+           echo($menu_object->generate_footer());
 
         ?>
 
@@ -59,4 +61,10 @@ require_once('../_inc/func.php');
 
 
 </footer>
+<?php
+      $page_name = basename($_SERVER["SCRIPT_NAME"], '.php');
+      $page_object = new Page();
+      $page_object->set_page_name($page_name);
+      echo($page_object->add_scripts());
+    ?>
 </html>

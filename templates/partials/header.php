@@ -1,5 +1,5 @@
 <?php
-require_once('../_inc/func.php');
+require_once('../_inc/config.php');
 ?>
 
 <!doctype html>
@@ -7,12 +7,14 @@ require_once('../_inc/func.php');
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Football</title>
-    <link rel="stylesheet" href="../css/main.css">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
-
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.css"></link><!--sporticons--> 
+    <title><?php 'Moj web | '. (basename($_SERVER["SCRIPT_NAME"], '.php'));?></title>
+    <?php
+      //add_stylesheet();
+      $page_name = basename($_SERVER["SCRIPT_NAME"], '.php');
+      $page_object = new Page();
+      $page_object->set_page_name($page_name);
+      echo($page_object->add_stylesheet());
+    ?>
 
 
   </head>
@@ -20,8 +22,7 @@ require_once('../_inc/func.php');
     <!--Menu--> 
     <nav class="navbar navbar-expand-sm navbar-danger bg-danger fixed-top">
         <div class="container">
-          <a class="navbar-brand" href="#"><i class='fas fa-futbol'></i>
-            Liverpool</a>
+          <a class="navbar-brand" href="index.php"><i class='fas fa-futbol'></i>Liverpool</a>
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarScroll" aria-controls="navbarScroll" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
           </button>
@@ -51,10 +52,16 @@ require_once('../_inc/func.php');
                 'History'=>'history.php',
                 'Players'=>'players.php',
                 'Galeria'=>'galeria.php',
-                'Kontakt'=>'kontakt.php'
+                'Kontakt'=>'kontakt.php',
+                'Login'=>'login.php'
            );
-           echo(generate_menu($pages));
-           
+         // echo(generate_menu($pages));
+         if(isset($_SESSION['logged_in']) && $_SESSION['logged_in'] == true){
+          $pages['Odhlasiť'] = 'logout.php';
+       }
+
+       $menu_object  = new Menu($pages);
+       echo($menu_object->generate_menu());
 
         ?>
            
