@@ -25,6 +25,12 @@
                 case 'admin':
                     $result .= '<link rel="stylesheet" href="../css/admin-history.css">';
                      break;
+                case 'admin-history-add':
+                    $result .= '<link rel="stylesheet" href="../css/add-history.css">';
+                    break;
+                case 'admin-history-update':
+                    $result .= '<link rel="stylesheet" href="../css/add-history.css">';
+                    break;
 
 
             }
@@ -56,6 +62,11 @@
         function redirect_homepage(){
             header("Location: templates/index.php");
             die("Nepodarilo sa nájsť Domovskú stránku");
+        }
+
+        function redirect_loginpage(){
+            header("Location: login.php");
+            die("Nepodarilo sa nájsť Loginovu stránku");
         }
 
     }

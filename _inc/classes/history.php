@@ -56,6 +56,52 @@
             }
         }
 
+        public function add($name, $panelname, $text){
+            try{
+                $data = array(
+                    'name' => $name,
+                    'panelname' => $panelname,
+                    'text' => $text
+                );
+                $query = "INSERT INTO history (name, panelname, text) VALUES (:name, :panelname, :text)";
+                $query_run = $this->db->prepare($query);
+                $query_run->execute($data);
+            }catch(PDOException $e){
+                echo $e->getMessage();
+            }
+        }
+
+
+        public function update($id, $name, $panelname, $text){
+            try{
+                // Check if ID exists
+                $check_query = "SELECT * FROM history WHERE id = :id";
+                $check_stmt = $this->db->prepare($check_query);
+                $check_stmt->execute(array(':id' => $id));
+                if ($check_stmt->rowCount() > 0) {
+                    // ID exists, proceed with update
+                    $data = array(
+                        'id' => $id,
+                        'name' => $name,
+                        'panelname' => $panelname,
+                        'text' => $text
+                    );
+                    $query = "UPDATE history SET name = :name, panelname = :panelname, text = :text WHERE id = :id";
+                    $query_run = $this->db->prepare($query);
+                    $query_run->execute($data);
+                    echo "Update successful!";
+                } else {
+                    // ID does not exist
+                    echo "Invalid ID!";
+                }
+            }catch(PDOException $e){
+                echo $e->getMessage();
+            }
+        }
+
+
+          
+
         
     }
 ?>

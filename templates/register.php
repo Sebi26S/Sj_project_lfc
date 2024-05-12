@@ -16,6 +16,8 @@
                 // Registrácia bola úspešná
                 echo "<br>";
                 echo "<p>Registrácia bola úspešná. Teraz sa môžete prihlásiť.</p>";
+                $page = new Page();
+                $page->redirect_loginpage();
             } else {
                 // Registrácia zlyhala
                 echo "<br>";
@@ -34,7 +36,7 @@
   <br>
 
       <section class="containerr">
-        <div class="input-group">
+        <div class="row">
           <div class="col-100 text-center">
               <h1>Registrácia</h1>
               <form action="" method="POST">

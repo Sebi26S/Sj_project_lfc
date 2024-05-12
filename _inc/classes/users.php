@@ -9,11 +9,11 @@
             $this->db = $this->db_connection();
         }
 
-        public function login($username, $password){
+        public function login($email, $password){
             //$username a $password došli z $_POST 
             try{
                 $data = array(
-                    'user_email'=>$username,
+                    'user_email'=>$email,
                     'user_password'=>md5($password),
                 );
                 

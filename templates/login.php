@@ -23,10 +23,10 @@ if(isset($_SESSION['logged_in'])&&$_SESSION['logged_in']==true){
          <main>
     <section class="containerr">
         <div class="row">
-            <div class="col-100 text-left">
+            <div class="col-50 text-left">
                 <h1>Prihlásenie</h1>
                 <form action="" method="POST">
-                    <input type="email" name="email" placeholder="Vaše meno">
+                    <input type="email" name="email" placeholder="Vaše mail">
                     <br>
                     <input type="text" name="password" placeholder="Vaše heslo">
                     <br>
@@ -57,9 +57,7 @@ if(isset($_SESSION['logged_in'])&&$_SESSION['logged_in']==true){
 
     
 </body>
-<br>
-<br>
-<br>
+
     <!--copyright--> 
     <?php
 include_once('partials/footer.php');

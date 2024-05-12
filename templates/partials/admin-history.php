@@ -1,22 +1,30 @@
 <h2>History</h2>
 <?php
     $history_object = new history();
-    $historys = $history_object->select();
+    $history = $history_object->select();
     if(isset($_POST['delete_history'])){
         $history_id = $_POST['delete_history'];
         $history_object->delete($history_id);
         header('Location: admin.php');
         exit();
     }
+    
+    echo'  <a class="btn btn-danger" href="admin-history-add.php" role="button">Add new history</a>  ';
+    
+
+
     echo '<table class="admin-table">';
-    echo '<tr><th>Name</th>
-                <th>panelname</th>
-                <th>text</th>
+    echo '<tr><th>id</th>
+                <th>Name</th>
+                <th>Panel</th>
+                <th>Text</th>
                 <th>Delete</th>
                 <th>Edit</th>
             </tr>';
-    foreach($historys as $c){
+    foreach($history as $c){
+ 
         echo '<tr>';
+        echo '<td>'.$c->id;'</td>';
         echo '<td>'.$c->name;'</td>';
         echo '<td>'.$c->panelname;'</td>';
         echo '<td>'.$c->text;'</td>';
