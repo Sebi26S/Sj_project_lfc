@@ -13,7 +13,6 @@ if(!isset($_SESSION['logged_in']) || $_SESSION['logged_in'] != true){
             <div class="col-100 text-left">
 
                 <?php
-                    //print_r($_SESSION);
                     if($_SESSION['is_admin']==1){
                         echo "<h1>Admin rozhranie</h1>";
 

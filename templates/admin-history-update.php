@@ -5,19 +5,15 @@ echo "<br>";
 echo "<br>";
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    // Check if form is submitted
     if (isset($_POST['update'])) {
-        // Assuming you have the required data from the form
         $id = $_POST['id'];
         $name = $_POST['name'];
         $panelname = $_POST['panelname'];
         $text = $_POST['text'];
 
-        // Check if any field is empty
         if (empty($id) || empty($name) || empty($panelname) || empty($text)) {
             echo "All fields are required!";
         } else {
-            // Call the update function
             $history_obj = new history();
             $history_obj->update($id, $name, $panelname, $text);
         }

@@ -37,7 +37,7 @@
                         $result .=  '</div>';
 
                     if ($temp_i % 2 == 0 || $temp_i == count($history)) {
-                        $result.= '</div>'; // Close row after every four items or at the end
+                        $result.= '</div>'; 
                     }
 
               }
@@ -74,12 +74,10 @@
 
         public function update($id, $name, $panelname, $text){
             try{
-                // Check if ID exists
                 $check_query = "SELECT * FROM history WHERE id = :id";
                 $check_stmt = $this->db->prepare($check_query);
                 $check_stmt->execute(array(':id' => $id));
                 if ($check_stmt->rowCount() > 0) {
-                    // ID exists, proceed with update
                     $data = array(
                         'id' => $id,
                         'name' => $name,
@@ -91,7 +89,6 @@
                     $query_run->execute($data);
                     echo "Update successful!";
                 } else {
-                    // ID does not exist
                     echo "Invalid ID!";
                 }
             }catch(PDOException $e){

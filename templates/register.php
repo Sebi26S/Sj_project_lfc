@@ -3,28 +3,23 @@
 
     $user_object = new User();
 
-    // Spracovanie údajov z formulára po odoslaní
     if(isset($_POST['user_register'])){
         $email = $_POST['email'];
         $password = $_POST['password'];
         $confirm_password = $_POST['confirm_password'];
 
-        // Kontrola, či sa zadané heslá zhodujú
         if($password === $confirm_password) {
             // Volanie metódy register() na vytvorenie používateľa
             if($user_object->register($email, $password)) {
-                // Registrácia bola úspešná
                 echo "<br>";
                 echo "<p>Registrácia bola úspešná. Teraz sa môžete prihlásiť.</p>";
                 $page = new Page();
                 $page->redirect_loginpage();
             } else {
-                // Registrácia zlyhala
                 echo "<br>";
                 echo "<p>Registrácia zlyhala. Skúste to prosím znova.</p>";
             }
         } else {
-            // Heslá sa nezhodujú
             echo "<br>";
             echo "<p>Heslá sa nezhodujú. Skúste to prosím znova.</p>";
         }
